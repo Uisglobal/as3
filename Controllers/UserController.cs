@@ -12,7 +12,8 @@ namespace Assignment_3_APIs.Models
 
         public UserData(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("Conn");
+            _connectionString = configuration.GetConnectionString("SQLiteConnection");
+
         }
 
         // Get all user data
@@ -51,6 +52,8 @@ namespace Assignment_3_APIs.Models
             using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
+                Console.WriteLine("Database connection successful!");
+
                 string query = "INSERT INTO users (email, password, username, purchase_history, shipping_address) VALUES (@Email, @Password, @Username, @PurchaseHistory, @ShippingAddress)";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Email", user.Email);

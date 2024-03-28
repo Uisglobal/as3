@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DAzfq1kt8b8IiilBj49zoRdufMs3EjxulvK1usKrSqq02zfMZ2kILzLAZbGzb4bY8MQtdGcg75OAgoPwz1wKLg==",
+  "dgSpecHash": "BGnue5+izO6y0OBbVOntlW+qfYQYmK2ouMDqLJy9rGgtD/3OZ6HA9S78lw8o5wQJQ15zEb+/F9X0K84N7aWYzA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\Assignment 3 APIs\\Assignment 3 APIs.csproj",
+  "projectFilePath": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\as3 git\\as3\\Assignment 3 APIs.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\harsh\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\harsh\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

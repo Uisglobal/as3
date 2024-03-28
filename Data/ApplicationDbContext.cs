@@ -1,10 +1,8 @@
 ﻿using Assignment_3_APIs.Models;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment_3_APIs.Data
 {
-
-
     // This class to interact with the database
     public class AppDbContext : DbContext
     {
@@ -13,15 +11,30 @@ namespace Assignment_3_APIs.Data
         // Define the tables in the database
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
-
         public DbSet<Comment> Comments { get; set; }
-
         public DbSet<Cart> Carts { get; set; }
-
         public DbSet<Order> Orders { get; set; }
-
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        // Method to check database connectivity
+        public bool IsDatabaseConnected()
+        {
+            try
+            {
+                Database.OpenConnection();
+                Console.WriteLine("Ping successful!");
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("f k!");
 
+                return false;
+            }
+            finally
+            {
+                Database.CloseConnection();
+            }
+        }
     }
 }

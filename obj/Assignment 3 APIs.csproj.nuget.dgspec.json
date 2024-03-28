@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\Assignment 3 APIs\\Assignment 3 APIs.csproj": {}
+    "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\as3 git\\as3\\Assignment 3 APIs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\Assignment 3 APIs\\Assignment 3 APIs.csproj": {
+    "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\as3 git\\as3\\Assignment 3 APIs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\Assignment 3 APIs\\Assignment 3 APIs.csproj",
+        "projectUniqueName": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\as3 git\\as3\\Assignment 3 APIs.csproj",
         "projectName": "Assignment 3 APIs",
-        "projectPath": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\Assignment 3 APIs\\Assignment 3 APIs.csproj",
+        "projectPath": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\as3 git\\as3\\Assignment 3 APIs.csproj",
         "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\Assignment 3 APIs\\obj\\",
+        "outputPath": "C:\\Users\\harsh\\OneDrive\\Desktop\\nunit test\\as3 git\\as3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\harsh\\AppData\\Roaming\\NuGet\\NuGet.Config",

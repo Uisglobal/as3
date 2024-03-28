@@ -34,7 +34,7 @@ namespace Assignment_3_APIs.Controllers
             ";
 
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("Conn");
+            string sqlDataSource = _configuration.GetConnectionString("SQLiteConnection");
             MySqlDataReader myReader;
             using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
             {
@@ -63,7 +63,7 @@ namespace Assignment_3_APIs.Controllers
             ";
 
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("Conn");
+            string sqlDataSource = _configuration.GetConnectionString("SQLiteConnection");
             MySqlDataReader myReader;
             using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
             {
@@ -95,7 +95,7 @@ namespace Assignment_3_APIs.Controllers
             ";
 
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("Conn");
+            string sqlDataSource = _configuration.GetConnectionString("SQLiteConnection");
             MySqlDataReader myReader;
             using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
             {
@@ -128,7 +128,7 @@ namespace Assignment_3_APIs.Controllers
             ";
 
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("Conn");
+            string sqlDataSource = _configuration.GetConnectionString("SQLiteConnection");
             MySqlDataReader myReader;
             using (MySqlConnection mycon = new MySqlConnection(sqlDataSource))
             {

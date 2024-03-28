@@ -12,7 +12,7 @@ namespace Assignment_3_APIs.Models
 
         public CommentData(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("Conn");
+            _connectionString = configuration.GetConnectionString("SQLiteConnection");
         }
 
         // Get all comments
