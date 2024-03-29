@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment_3_APIs.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240328055030_InitialCreate")]
+    [Migration("20240329072117_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -109,8 +109,6 @@ namespace Assignment_3_APIs.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderDetails");
 
@@ -231,20 +229,6 @@ namespace Assignment_3_APIs.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Assignment_3_APIs.Models.OrderDetail", b =>
-                {
-                    b.HasOne("Assignment_3_APIs.Models.Order", null)
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Assignment_3_APIs.Models.Order", b =>
-                {
-                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

@@ -21,7 +21,7 @@ namespace Assignment_3_APIs.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            using (var connection = new MySqlConnection(_configuration.GetConnectionString("SQLiteConnection")))
+            using (var connection = new MySqlConnection(_configuration.GetConnectionString("Default")))
             {
                 var query = "SELECT * FROM cart";
                 var adapter = new MySqlDataAdapter(query, connection);
@@ -34,7 +34,7 @@ namespace Assignment_3_APIs.Controllers
         [HttpPost]
         public JsonResult Post(Cart cart)
         {
-            using (var connection = new MySqlConnection(_configuration.GetConnectionString("SQLiteConnection")))
+            using (var connection = new MySqlConnection(_configuration.GetConnectionString("Default")))
             {
                 var query = "INSERT INTO cart (product_id, quantity, user_id) VALUES (@ProductId, @Quantity, @UserId)";
                 var command = new MySqlCommand(query, connection);
@@ -50,7 +50,7 @@ namespace Assignment_3_APIs.Controllers
         [HttpPut("{id}")]
         public JsonResult Put(int id, Cart cart)
         {
-            using (var connection = new MySqlConnection(_configuration.GetConnectionString("SQLiteConnection")))
+            using (var connection = new MySqlConnection(_configuration.GetConnectionString("Default")))
             {
                 var query = "UPDATE cart SET product_id = @ProductId, quantity = @Quantity, user_id = @UserId WHERE id = @Id";
                 var command = new MySqlCommand(query, connection);
@@ -67,7 +67,7 @@ namespace Assignment_3_APIs.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            using (var connection = new MySqlConnection(_configuration.GetConnectionString("SQLiteConnection")))
+            using (var connection = new MySqlConnection(_configuration.GetConnectionString("Default")))
             {
                 var query = "DELETE FROM cart WHERE id = @Id";
                 var command = new MySqlCommand(query, connection);

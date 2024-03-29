@@ -13,12 +13,10 @@ namespace Assignment_3_APIs.Models
         public string Image { get; set; }
         public int ProductId { get; set; }
 
-        [ForeignKey("ProductId")]
         public Product Product { get; set; }
 
         public int UserId { get; set; }
 
-        [ForeignKey("UserId")]
         public User User { get; set; }
 
     }

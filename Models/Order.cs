@@ -13,7 +13,6 @@ namespace Assignment_3_APIs.Models
         public string ShippingCost { get; set; }
         public decimal Total { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }
 
     }
 }

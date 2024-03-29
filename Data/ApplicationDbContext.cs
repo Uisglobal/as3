@@ -16,25 +16,26 @@ namespace Assignment_3_APIs.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
-        // Method to check database connectivity
-        public bool IsDatabaseConnected()
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            try
-            {
-                Database.OpenConnection();
-                Console.WriteLine("Ping successful!");
-                return true;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("f k!");
+            // Configure decimal properties to avoid truncation warnings
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Total)
+                .HasColumnType("decimal(18, 2)");
 
-                return false;
-            }
-            finally
-            {
-                Database.CloseConnection();
-            }
+            modelBuilder.Entity<OrderDetail>()
+                .Property(od => od.UnitPrice)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Price)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.ShippingCost)
+                .HasColumnType("decimal(18, 2)");
+
+            // Add any other configurations here
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Assignment_3_APIs
 
             // Add DbContext using SQLite
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("SQLiteConnection")));
+                options.UseSqlite(Configuration.GetConnectionString("Default")));
 
             // Add controllers
             services.AddControllers();
