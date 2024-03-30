@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "e23841be-a5a6-4a8f-abb6-c763281574d8",
+		"name": "Assignment3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31207937"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Username\":\"Darshil\",\"Email\":\"darshil@dp.com\",\"Password\":\"password123\",\"ShippingAddress\":\"123 Main St\",\"PurchaseHistory\":\"a, b\"}"
+						},
+						"url": "http://localhost:5236/api/Users/insertUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5236/api/Users/getUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":1,\"Username\":\"UpdatedUsername\",\"Email\":\"dp@example.com\",\"Password\":\"updatedpassword\",\"ShippingAddress\":\"Updated Address\",\"PurchaseHistory\":\"Updated History\"}"
+						},
+						"url": "http://localhost:5236/api/Users/updateUser/{userId}"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5236/api/Users/deleteUser/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5236/api/Products/getProducts"
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"productName\":\"ProductA\",\"productDescription\":\"Description for ProductA\",\"productImg\":\"productA.jpg\",\"productPrice\":50.0,\"shippingCost\":5.0}"
+						},
+						"url": "http://localhost:5236/api/Products/insertProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5236/api/Products/deleatProduct/{productId}"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":1,\"productName\":\"UpdatedProductA\",\"productDescription\":\"Updated Description\",\"productImg\":\"updatedProductA.jpg\",\"productPrice\":60.0,\"shippingCost\":6.0}"
+						},
+						"url": "http://localhost:5236/api/Products/updateProducts/{productId}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5236/api/Orders/getOrders"
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"orderUId\":1,\"orderProductID\":1,\"OrderQuantity\":2,\"total\":120.0}"
+						},
+						"url": "http://localhost:5236/api/Orders/insertOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5236/api/Orders/deleatOrder/{orderId}"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":1,\"orderUId\":1,\"orderProductID\":1,\"OrderQuantity\":3,\"total\":180.0}"
+						},
+						"url": "http://localhost:5236/api/Orders/updateOrder/{orderId}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carts",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5236/api/Carts/GetCarts"
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cartUId\":1,\"cartProdutID\":1,\"productQuantity\":3,\"cartTotalValue\":150.0}"
+						},
+						"url": "http://localhost:5236/api/Carts/insertCart"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5232/api/Carts/deleteCart/{cartId}"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":1,\"cartUId\":1,\"cartProdutID\":1,\"productQuantity\":4,\"cartTotalValue\":200.0}"
+						},
+						"url": "http://localhost:5236/api/Carts/updateCart/{cartId}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5236/api/Comments/getComments"
+					},
+					"response": []
+				},
+				{
+					"name": "insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"commentUId\":1,\"commentProductID\":1,\"ratings\":4.5,\"imgs\":\"commentImage.jpg\",\"text\":\"This is a great product!\"}"
+						},
+						"url": "http://localhost:5236/api/Comments/insertComment"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:5236/api/Comments/deleatComment/{commentId}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Id\":1,\"commentUId\":1,\"commentProductID\":1,\"ratings\":5.0,\"imgs\":\"updatedImage.jpg\",\"text\":\"Updated comment text!\"}"
+						},
+						"url": "http://localhost:5232/api/Comments/updateComment/{commentId}"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

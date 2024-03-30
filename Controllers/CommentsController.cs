@@ -12,42 +12,42 @@ namespace Assignment_3_APIs.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class CommentsController : Controller
     {
-
         private readonly AppDbContext _context;
 
-        public UsersController(AppDbContext context)
+        public CommentsController(AppDbContext context)
         {
             _context = context;
         }
 
-        //Get Users data
+        // get comments data
+
         [HttpGet]
-        [Route("getUsers")]
-        public async Task<IActionResult> GetUserList()
+        [Route("getComments")]
+        public async Task<IActionResult> GetCommentList()
         {
-            var userList = _context.Users.ToList();
-            return userList.Count > 0 ? Ok(userList) : NotFound();
+            var commentList = _context.comment.ToList();
+            return commentList.Count > 0 ? Ok(commentList) : NotFound();
         }
 
-        //Insert Users data
+        // post comments data
         [HttpPost]
-        [Route("insertUsers")]
-        public async Task<IActionResult> CreateUser([FromBody] User userData)
+        [Route("insertComment")]
+        public async Task<IActionResult> CreateComment([FromBody] Comment commentData)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(userData);
+                _context.Add(commentData);
                 await _context.SaveChangesAsync();
             }
-            return Ok(userData);
+            return Ok(commentData);
         }
 
-        //Delete Users data
+        // Deleate comments data
         [HttpDelete]
-        [Route("deleteUser")]
-        public async Task<IActionResult> DeleteUser(int? id)
+        [Route("deleatComment")]
+        public async Task<IActionResult> DeleteComment(int? id)
         {
             if (ModelState.IsValid)
             {
@@ -57,28 +57,28 @@ namespace Assignment_3_APIs.Controllers
                 }
                 else
                 {
-                    var user = await _context.Users.FindAsync(id);
-                    if (user == null)
+                    var comment = await _context.comment.FindAsync(id);
+                    if (comment == null)
                     {
                         return NotFound();
                     }
                     else
                     {
-                        _context.Users.Remove(user);
+                        _context.comment.Remove(comment);
                         await _context.SaveChangesAsync();
-                        return Ok("User Deleted");
+                        return Ok("Comment Deleted");
                     }
                 }
             }
             return BadRequest("Internal Server Error");
         }
 
-        //Update Users data
+        //Update comments data
         [HttpPut]
-        [Route("updateUser")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+        [Route("updateComment")]
+        public async Task<IActionResult> UpdateComment(int id, [FromBody] Comment comment)
         {
-            if (id != user.Id)
+            if (id != comment.Id)
             {
                 return NotFound();
             }
@@ -87,13 +87,13 @@ namespace Assignment_3_APIs.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(comment);
                     await _context.SaveChangesAsync();
-                    return Ok(string.Concat("User updated"));
+                    return Ok(string.Concat("comment updated"));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Users.Any(e => e.Id == user.Id))
+                    if (!_context.comment.Any(e => e.Id == comment.Id))
                     {
                         return NotFound();
                     }
@@ -105,6 +105,7 @@ namespace Assignment_3_APIs.Controllers
             }
             return BadRequest("Internal Server Error");
         }
+
 
     }
 }

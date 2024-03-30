@@ -1,14 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Assignment_3_APIs.Models
+﻿namespace Assignment_3_APIs.Models
 {
     public class Cart
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
-
-        public Product Product { get; set; }
-        public int UserId { get; set; }
-        public int Quantity { get; set; }
+        public int cartUId { get; set; }
+        public int cartProdutID { get; set; }
+        public int productQuantity { get; set; }
+        public double cartTotalValue { get; set; }
     }
 }

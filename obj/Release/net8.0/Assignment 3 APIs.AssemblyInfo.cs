@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Assignment 3 APIs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48c73f9a63838cb73e8f37f6b1da728b005559a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b839bfb0b733cf708746fd33f8c663f00c69dca7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Assignment 3 APIs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Assignment 3 APIs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

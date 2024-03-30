@@ -12,42 +12,41 @@ namespace Assignment_3_APIs.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class OrdersController : Controller
     {
-
         private readonly AppDbContext _context;
 
-        public UsersController(AppDbContext context)
+        public OrdersController(AppDbContext context)
         {
             _context = context;
         }
 
-        //Get Users data
+        //Get Orders data
         [HttpGet]
-        [Route("getUsers")]
-        public async Task<IActionResult> GetUserList()
+        [Route("getOrders")]
+        public async Task<IActionResult> GetOrderList()
         {
-            var userList = _context.Users.ToList();
-            return userList.Count > 0 ? Ok(userList) : NotFound();
+            var orderList = _context.Orders.ToList();
+            return orderList.Count > 0 ? Ok(orderList) : NotFound();
         }
 
-        //Insert Users data
+        //Insert Orders data
         [HttpPost]
-        [Route("insertUsers")]
-        public async Task<IActionResult> CreateUser([FromBody] User userData)
+        [Route("insertOrder")]
+        public async Task<IActionResult> CreateOrder([FromBody] Order orderData)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(userData);
+                _context.Add(orderData);
                 await _context.SaveChangesAsync();
             }
-            return Ok(userData);
+            return Ok(orderData);
         }
 
-        //Delete Users data
+        //Delete Orders data
         [HttpDelete]
-        [Route("deleteUser")]
-        public async Task<IActionResult> DeleteUser(int? id)
+        [Route("deleatOrder")]
+        public async Task<IActionResult> DeleteOrder(int? id)
         {
             if (ModelState.IsValid)
             {
@@ -57,28 +56,28 @@ namespace Assignment_3_APIs.Controllers
                 }
                 else
                 {
-                    var user = await _context.Users.FindAsync(id);
-                    if (user == null)
+                    var order = await _context.Orders.FindAsync(id);
+                    if (order == null)
                     {
                         return NotFound();
                     }
                     else
                     {
-                        _context.Users.Remove(user);
+                        _context.Orders.Remove(order);
                         await _context.SaveChangesAsync();
-                        return Ok("User Deleted");
+                        return Ok("Order Deleted");
                     }
                 }
             }
             return BadRequest("Internal Server Error");
         }
 
-        //Update Users data
+        //Update Orders data
         [HttpPut]
-        [Route("updateUser")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+        [Route("updateOrder")]
+        public async Task<IActionResult> UpdateOrder(int id, [FromBody] Order order)
         {
-            if (id != user.Id)
+            if (id != order.Id)
             {
                 return NotFound();
             }
@@ -87,13 +86,13 @@ namespace Assignment_3_APIs.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(order);
                     await _context.SaveChangesAsync();
-                    return Ok(string.Concat("User updated"));
+                    return Ok(string.Concat("Order updated"));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Users.Any(e => e.Id == user.Id))
+                    if (!_context.Orders.Any(e => e.Id == order.Id))
                     {
                         return NotFound();
                     }
@@ -105,6 +104,5 @@ namespace Assignment_3_APIs.Controllers
             }
             return BadRequest("Internal Server Error");
         }
-
     }
 }

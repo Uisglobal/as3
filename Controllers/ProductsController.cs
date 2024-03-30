@@ -12,42 +12,42 @@ namespace Assignment_3_APIs.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class ProductsController : Controller
     {
 
         private readonly AppDbContext _context;
 
-        public UsersController(AppDbContext context)
+        public ProductsController(AppDbContext context)
         {
             _context = context;
         }
 
-        //Get Users data
+        //Get Products data
         [HttpGet]
-        [Route("getUsers")]
-        public async Task<IActionResult> GetUserList()
+        [Route("getProducts")]
+        public async Task<IActionResult> GetProductList()
         {
-            var userList = _context.Users.ToList();
-            return userList.Count > 0 ? Ok(userList) : NotFound();
+            var productsList = _context.products.ToList();
+            return productsList.Count > 0 ? Ok(productsList) : NotFound();
         }
 
-        //Insert Users data
+        //Insert Products data
         [HttpPost]
-        [Route("insertUsers")]
-        public async Task<IActionResult> CreateUser([FromBody] User userData)
+        [Route("insertProduct")]
+        public async Task<IActionResult> CreateProduct([FromBody] Product productData)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(userData);
+                _context.Add(productData);
                 await _context.SaveChangesAsync();
             }
-            return Ok(userData);
+            return Ok(productData);
         }
 
-        //Delete Users data
+        //Deleat Products data
         [HttpDelete]
-        [Route("deleteUser")]
-        public async Task<IActionResult> DeleteUser(int? id)
+        [Route("deleatProduct")]
+        public async Task<IActionResult> DeleteProduct(int? id)
         {
             if (ModelState.IsValid)
             {
@@ -57,28 +57,28 @@ namespace Assignment_3_APIs.Controllers
                 }
                 else
                 {
-                    var user = await _context.Users.FindAsync(id);
-                    if (user == null)
+                    var product = await _context.products.FindAsync(id);
+                    if (product == null)
                     {
                         return NotFound();
                     }
                     else
                     {
-                        _context.Users.Remove(user);
+                        _context.products.Remove(product);
                         await _context.SaveChangesAsync();
-                        return Ok("User Deleted");
+                        return Ok("Product Deleted");
                     }
                 }
             }
             return BadRequest("Internal Server Error");
         }
 
-        //Update Users data
+        //Update Products data
         [HttpPut]
-        [Route("updateUser")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+        [Route("updateProducts")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
         {
-            if (id != user.Id)
+            if (id != product.Id)
             {
                 return NotFound();
             }
@@ -87,13 +87,13 @@ namespace Assignment_3_APIs.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(product);
                     await _context.SaveChangesAsync();
-                    return Ok(string.Concat("User updated"));
+                    return Ok(string.Concat("Produc updated"));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Users.Any(e => e.Id == user.Id))
+                    if (!_context.products.Any(e => e.Id == product.Id))
                     {
                         return NotFound();
                     }
@@ -105,6 +105,5 @@ namespace Assignment_3_APIs.Controllers
             }
             return BadRequest("Internal Server Error");
         }
-
     }
 }

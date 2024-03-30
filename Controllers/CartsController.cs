@@ -12,42 +12,41 @@ namespace Assignment_3_APIs.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class CartsController : Controller
     {
-
         private readonly AppDbContext _context;
 
-        public UsersController(AppDbContext context)
+        public CartsController(AppDbContext context)
         {
             _context = context;
         }
-
-        //Get Users data
+        // get cart data
         [HttpGet]
-        [Route("getUsers")]
-        public async Task<IActionResult> GetUserList()
+        [Route("GetCarts")]
+        public async Task<IActionResult> GetCartList()
         {
-            var userList = _context.Users.ToList();
-            return userList.Count > 0 ? Ok(userList) : NotFound();
+            var cartList = _context.Carts.ToList();
+            return cartList.Count > 0 ? Ok(cartList) : NotFound();
         }
 
-        //Insert Users data
+        // post cart data
         [HttpPost]
-        [Route("insertUsers")]
-        public async Task<IActionResult> CreateUser([FromBody] User userData)
+        [Route("insertCart")]
+        public async Task<IActionResult> CreateCart([FromBody] Cart cartData)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(userData);
-                await _context.SaveChangesAsync();
+             _context.Add(cartData);
+        await _context.SaveChangesAsync();
+        return Ok(cartData);
             }
-            return Ok(userData);
+            return Ok(cartData);
         }
 
-        //Delete Users data
+        // delete cart data
         [HttpDelete]
-        [Route("deleteUser")]
-        public async Task<IActionResult> DeleteUser(int? id)
+        [Route("deleteCart")]
+        public async Task<IActionResult> DeleteCart(int? id)
         {
             if (ModelState.IsValid)
             {
@@ -57,28 +56,27 @@ namespace Assignment_3_APIs.Controllers
                 }
                 else
                 {
-                    var user = await _context.Users.FindAsync(id);
-                    if (user == null)
+                    var cart = await _context.Carts.FindAsync(id);
+                    if (cart == null)
                     {
                         return NotFound();
                     }
                     else
                     {
-                        _context.Users.Remove(user);
+                        _context.Carts.Remove(cart);
                         await _context.SaveChangesAsync();
-                        return Ok("User Deleted");
+                        return Ok("Cart Deleted");
                     }
                 }
             }
             return BadRequest("Internal Server Error");
         }
-
-        //Update Users data
+        // update cart data
         [HttpPut]
-        [Route("updateUser")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+        [Route("UpdateCart")]
+        public async Task<IActionResult> UpdateCart(int id, [FromBody] Cart cart)
         {
-            if (id != user.Id)
+            if (id != cart.Id)
             {
                 return NotFound();
             }
@@ -87,13 +85,13 @@ namespace Assignment_3_APIs.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(cart);
                     await _context.SaveChangesAsync();
-                    return Ok(string.Concat("User updated"));
+                    return Ok(string.Concat("Cart updated"));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Users.Any(e => e.Id == user.Id))
+                    if (!_context.Carts.Any(e => e.Id == cart.Id))
                     {
                         return NotFound();
                     }
@@ -105,6 +103,7 @@ namespace Assignment_3_APIs.Controllers
             }
             return BadRequest("Internal Server Error");
         }
+
 
     }
 }

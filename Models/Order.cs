@@ -1,18 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Assignment_3_APIs.Models
+﻿namespace Assignment_3_APIs.Models
 {
-    public class Order : OrderDetail
+    public class Order
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int orderUId { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime CreatedDate { get; set; }
-        public string ShippingAddress { get; set; }
-        public string ShippingCost { get; set; }
-        public decimal Total { get; set; }
-
-
+        public int orderProductID { get; set; }
+        public int OrderQuantity { get; set; }
+        public double total { get; set; }
     }
 }
