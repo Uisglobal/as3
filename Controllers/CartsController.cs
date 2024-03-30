@@ -12,6 +12,7 @@ namespace Assignment_3_APIs.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    // endpoint
     public class CartsController : Controller
     {
         private readonly AppDbContext _context;
